@@ -9,7 +9,7 @@ const statsData = [
 
 const Numbers = () => {
   return (
-    <section className="relative -mt-8 md:-mt-16 z-10">
+    <section className="relative md:mt-16 z-10">
       <Container className="flex justify-center items-center px-4">
         <div className="w-full max-w-6xl mx-auto">
           <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 divide-y-2 md:divide-y-0 md:divide-x-2 divide-amber-100">
