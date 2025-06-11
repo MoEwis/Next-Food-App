@@ -15,7 +15,7 @@ const MenuItem = ({ item }: { item: any }) => {
         </strong>
       </div>
       <p className="text-gray-500 text-sm line-clamp-3">{item.description}</p>
-      <AddToCartButton />
+      <AddToCartButton item={item} />
     </li>
   );
 };
