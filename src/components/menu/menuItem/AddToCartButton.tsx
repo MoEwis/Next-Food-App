@@ -19,10 +19,10 @@ const sizes = [
   { id: crypto.randomUUID(), name: "Medium", price: 4 },
   { id: crypto.randomUUID(), name: "Large", price: 8 },
 ];
-const extar = [
-  { id: crypto.randomUUID(), name: "Small", price: 2 },
-  { id: crypto.randomUUID(), name: "Medium", price: 1.5 },
-  { id: crypto.randomUUID(), name: "Large", price: 1.99 },
+const extars = [
+  { id: crypto.randomUUID(), name: "Chesse", price: 2 },
+  { id: crypto.randomUUID(), name: "Onino", price: 1.5 },
+  { id: crypto.randomUUID(), name: "Tomato", price: 1.99 },
 ];
 const AddToCartButton = ({ item }: { item: any }) => {
   return (
@@ -44,20 +44,21 @@ const AddToCartButton = ({ item }: { item: any }) => {
             <DialogTitle>{item.name}</DialogTitle>
             <DialogDescription>{item.description}</DialogDescription>
           </DialogHeader>
-          <div className="space-y-10">
+          <div className="space-y-10 ">
             <div className="space-y-4 text-center">
+              <Label htmlFor="pick-size">Pick a size</Label>
               <Radio sizes={sizes} item={item} />
             </div>
-            <div>
+            <div className="space-y-4 text-center">
               <Label htmlFor="add-extar">Any Extar</Label>
-              <Extars extar={extar} item={item} />
+              <Extars extar={extars} item={item} />
             </div>
           </div>
           <DialogFooter>
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
-            <Button type="submit">Save changes</Button>
+            <Button type="submit">Add To Cart </Button>
           </DialogFooter>
         </DialogContent>
       </form>

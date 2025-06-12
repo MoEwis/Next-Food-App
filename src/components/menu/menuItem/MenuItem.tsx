@@ -11,7 +11,7 @@ const MenuItem = ({ item }: { item: any }) => {
       <div className="flex items-center justify-between mb-4">
         <h4 className="font-semibold text-xl my-3">{item.name}</h4>
         <strong className="text-accent">
-          {formatterCurrency(item.bestPrice)}
+          {formatterCurrency(item.basePrice)}
         </strong>
       </div>
       <p className="text-gray-500 text-sm line-clamp-3">{item.description}</p>

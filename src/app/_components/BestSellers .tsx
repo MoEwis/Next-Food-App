@@ -1,32 +1,11 @@
 import Container from "@/components/container/layout";
 import MinHeading from "@/components/main-heading";
 import MenuItem from "@/components/menu/menuItem/MenuItem";
+import { db } from "@/lib/prisma";
 
-const bestSellers = [
-  {
-    id: crypto.randomUUID(),
-    name: "Burger 1",
-    description: "This IS A BURGER",
-    bestPrice: 100,
-    image: "/assets/Hero1.jpg",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Burger 2",
-    description: "This IS A BURGER",
-    bestPrice: 200,
-    image: "/assets/Hero1.jpg",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Burger 3",
-    description: "This IS A BURGER",
-    bestPrice: 300,
-    image: "/assets/Hero1.jpg",
-  },
-];
-
-const BestSellers = () => {
+const BestSellers = async () => {
+  const bestSellers = await db.product.findMany();
+  console.log("bestSellers", bestSellers);
   return (
     <section>
       <Container className="my-16">
