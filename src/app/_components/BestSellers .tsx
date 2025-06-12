@@ -4,8 +4,16 @@ import MenuItem from "@/components/menu/menuItem/MenuItem";
 import { db } from "@/lib/prisma";
 
 const BestSellers = async () => {
-  const bestSellers = await db.product.findMany();
-  console.log("bestSellers", bestSellers);
+  // const bestSellers = await db.product.findMany();
+  // console.log("bestSellers", bestSellers);
+  // const size = await db.size.create({
+  //   data: {
+  //     name: "MEDIUN",
+  //     price: 0,
+  //     productId: "mocnsacbjsjbka",
+  //   },
+  // });
+  // console.log("size", size);
   return (
     <section>
       <Container className="my-16">
@@ -14,9 +22,9 @@ const BestSellers = async () => {
         </div>
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {bestSellers.map((item) => (
+          {/* {bestSellers.map((item) => (
             <MenuItem key={item.id} item={item} />
-          ))}
+          ))} */}
         </ul>
       </Container>
     </section>
