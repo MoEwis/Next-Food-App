@@ -14,18 +14,8 @@ import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import Radio from "./RadioGroup";
 import Extars from "./Extar";
-import { Product } from "@/generated/prisma";
 import { productWithRelations } from "@/types/product";
-// const sizes = [
-//   { id: crypto.randomUUID(), name: "Small", price: 0 },
-//   { id: crypto.randomUUID(), name: "Medium", price: 4 },
-//   { id: crypto.randomUUID(), name: "Large", price: 8 },
-// ];
-const extars = [
-  { id: crypto.randomUUID(), name: "Chesse", price: 2 },
-  { id: crypto.randomUUID(), name: "Onino", price: 1.5 },
-  { id: crypto.randomUUID(), name: "Tomato", price: 1.99 },
-];
+
 const AddToCartButton = ({ item }: { item: productWithRelations }) => {
   return (
     <Dialog>
@@ -53,7 +43,7 @@ const AddToCartButton = ({ item }: { item: productWithRelations }) => {
             </div>
             <div className="space-y-4 text-center">
               <Label htmlFor="add-extar">Any Extar</Label>
-              <Extars extar={extars} item={item} />
+              <Extars extar={item.extras} />
             </div>
           </div>
           <DialogFooter>

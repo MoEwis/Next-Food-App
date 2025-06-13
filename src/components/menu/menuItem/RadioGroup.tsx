@@ -21,7 +21,7 @@ const Radio = ({
           className="flex items-center space-x-2 border-2 border-gray-100 rounded-md p-3 "
         >
           <RadioGroupItem
-            value="default"
+            value={size.id}
             id={size.id}
             className="border-primary"
           />

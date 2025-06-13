@@ -7,9 +7,10 @@ const BestSellers = async () => {
   const bestSellers = await db.product.findMany({
     include: {
       sizes: true,
+      extras: true,
     },
   });
-  console.log("bestSellers", bestSellers);
+
   return (
     <section>
       <Container className="my-16">

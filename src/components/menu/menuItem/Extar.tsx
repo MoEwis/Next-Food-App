@@ -1,7 +1,7 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Extra, Product } from "@/generated/prisma";
-const Extars = ({ extar, item }: { item: Product; extar: Extra[] }) => {
+const Extars = ({ extar }: { extar: Extra[] }) => {
   return (
     <div>
       {extar.map((extar) => (

@@ -20,7 +20,7 @@ const Hero = () => {
               Sed ut perspiciatis unde omnis iste natus sit voluptatem
               accusantium doloremque laudantium
             </p>
-            <div className="flex items-center gap-6 pt-4">
+            <div className="flex items-center gap-6 pt-4 md:flex-wrap md: ">
               <Link
                 href={`/${Routes.MENU}`}
                 className={`${buttonVariants({
@@ -41,7 +41,7 @@ const Hero = () => {
           </div>
 
           {/* Image Container */}
-          <div className="relative aspect-[4/3] lg:w-[1200px]   max-w-xl mx-auto md:mx-0">
+          <div className="relative aspect-[4/3] lg:w-[480px]  max-w-xl mx-auto md:mx-0">
             <Image
               src="/assets/Hero1.jpg"
               alt="Hero"
