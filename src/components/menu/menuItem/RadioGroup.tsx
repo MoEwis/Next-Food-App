@@ -1,10 +1,18 @@
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Size } from "@/generated/prisma";
 import { formatterCurrency } from "@/lib/formatters";
+import { productWithRelations } from "@/types/product";
 
 import React from "react";
 
-const Radio = ({ sizes, item }: { item: any; sizes: any }) => {
+const Radio = ({
+  sizes,
+  item,
+}: {
+  item: productWithRelations;
+  sizes: Size[];
+}) => {
   return (
     <RadioGroup defaultValue="comfortable">
       {sizes.map((size) => (

@@ -1,8 +1,10 @@
 import { formatterCurrency } from "@/lib/formatters";
 import Image from "next/image";
 import AddToCartButton from "./AddToCartButton";
+import { Product } from "@/generated/prisma";
+import { productWithRelations } from "@/types/product";
 
-const MenuItem = ({ item }: { item: any }) => {
+const MenuItem = ({ item }: { item: productWithRelations }) => {
   return (
     <li className="p-4 border-4 ">
       <div className="relative w-48 h-48 mx-auto">

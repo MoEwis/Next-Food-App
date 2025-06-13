@@ -14,17 +14,19 @@ import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import Radio from "./RadioGroup";
 import Extars from "./Extar";
-const sizes = [
-  { id: crypto.randomUUID(), name: "Small", price: 0 },
-  { id: crypto.randomUUID(), name: "Medium", price: 4 },
-  { id: crypto.randomUUID(), name: "Large", price: 8 },
-];
+import { Product } from "@/generated/prisma";
+import { productWithRelations } from "@/types/product";
+// const sizes = [
+//   { id: crypto.randomUUID(), name: "Small", price: 0 },
+//   { id: crypto.randomUUID(), name: "Medium", price: 4 },
+//   { id: crypto.randomUUID(), name: "Large", price: 8 },
+// ];
 const extars = [
   { id: crypto.randomUUID(), name: "Chesse", price: 2 },
   { id: crypto.randomUUID(), name: "Onino", price: 1.5 },
   { id: crypto.randomUUID(), name: "Tomato", price: 1.99 },
 ];
-const AddToCartButton = ({ item }: { item: any }) => {
+const AddToCartButton = ({ item }: { item: productWithRelations }) => {
   return (
     <Dialog>
       <form>
@@ -47,7 +49,7 @@ const AddToCartButton = ({ item }: { item: any }) => {
           <div className="space-y-10 ">
             <div className="space-y-4 text-center">
               <Label htmlFor="pick-size">Pick a size</Label>
-              <Radio sizes={sizes} item={item} />
+              <Radio sizes={item.sizes} item={item} />
             </div>
             <div className="space-y-4 text-center">
               <Label htmlFor="add-extar">Any Extar</Label>

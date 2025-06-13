@@ -1,11 +1,12 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-const Extars = ({ extar, item }: { item: any; extar: any }) => {
+import { Extra, Product } from "@/generated/prisma";
+const Extars = ({ extar, item }: { item: Product; extar: Extra[] }) => {
   return (
     <div>
       {extar.map((extar) => (
         <div
-          key={extar.is}
+          key={extar.id}
           className="flex items-center space-x-2 border-gray-100 rounded-md p-4"
         >
           <div className="flex items-center gap-3">

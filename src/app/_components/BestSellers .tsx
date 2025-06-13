@@ -4,7 +4,11 @@ import MenuItem from "@/components/menu/menuItem/MenuItem";
 import { db } from "@/lib/prisma";
 
 const BestSellers = async () => {
-  const bestSellers = await db.product.findMany();
+  const bestSellers = await db.product.findMany({
+    include: {
+      sizes: true,
+    },
+  });
   console.log("bestSellers", bestSellers);
   return (
     <section>
