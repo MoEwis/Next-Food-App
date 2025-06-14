@@ -1,6 +1,7 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Extra, Product } from "@/generated/prisma";
+import { formatterCurrency } from "@/lib/formatters";
 const Extars = ({ extar }: { extar: Extra[] }) => {
   return (
     <div>
@@ -15,7 +16,7 @@ const Extars = ({ extar }: { extar: Extra[] }) => {
               htmlFor={extar.id}
               className="text-sm font-semibold leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
             >
-              {extar.name}
+              {extar.name} {formatterCurrency(extar.price)}
             </Label>
           </div>
         </div>
