@@ -5,14 +5,14 @@ interface MinHeadingProps {
 }
 const MinHeading = ({ title, subTitle, className = "" }: MinHeadingProps) => {
   return (
-    <div className={`${className}`}>
+    <section className={`${className}`}>
       <span className={`uppercase  font-semibold  leading-4 ${className}`}>
         {subTitle}
       </span>
       <h2 className={`text-primary font-bold text-4xl italic ${className}`}>
         {title}
       </h2>
-    </div>
+    </section>
   );
 };
 
