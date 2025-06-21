@@ -3,6 +3,7 @@ import Container from "../container/layout";
 import Link from "../link";
 import { Routes } from "@/constants/enums";
 import Navbar from "./navbar";
+import CartButton from "./CartButton";
 
 const index = () => {
   return (
@@ -16,6 +17,7 @@ const index = () => {
             🍕 Pizza
           </Link>
           <Navbar />
+          <CartButton />
         </div>
       </header>
     </Container>
