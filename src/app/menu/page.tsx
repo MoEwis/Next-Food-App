@@ -1,21 +1,22 @@
 import Container from "@/components/container/layout";
-import { db } from "@/lib/prisma";
+import Meun from "@/components/menu";
 import { getProductsByCategory } from "@/server/db/products";
 
 const MenuPage = async () => {
-  //   await db.category.createMany({
-  //     data: [
-  //       { name: "food 1", order: 1 },
-  //       { name: "food 2", order: 2 },
-  //     ],
-  //   });
-  const categories: { name: string }[] = await getProductsByCategory();
-  //   console.log(categories);
+  const categories = await getProductsByCategory();
   return (
     <main>
       <Container>
-        <div></div>
-        <div>{JSON.stringify(categories.map((c) => c.name))}</div>
+        {categories.map((category) => (
+          <section key={category.id} className="section-gap">
+            <div className="text-center">
+              <h1 className="text-primary font-bold text-4xl italic mb-6">
+                {category.name}
+              </h1>
+            </div>
+            <Meun items={category.products} />
+          </section>
+        ))}
       </Container>
     </main>
   );
