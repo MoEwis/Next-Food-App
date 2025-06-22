@@ -10,14 +10,7 @@ import { formatterCurrency } from "@/lib/formatters";
 import { getTotalAmount } from "@/lib/getCartQuantity";
 import { useAppSelector } from "@/redux/hooks";
 import { selectCartItems } from "@/redux/features/cart/cartSlice";
-
-//  Schema
-const checkoutSchema = z.object({
-  phone: z.string().min(10, "Phone number must be at least 10 digits"),
-  address: z.string().min(5, "Address is too short"),
-  zip: z.string().min(4, "Zip code must be at least 4 digits"),
-  city: z.string().min(2, "City is required"),
-});
+import { checkoutSchema } from "@/schema/schema";
 
 type CheckoutFormData = z.infer<typeof checkoutSchema>;
 
