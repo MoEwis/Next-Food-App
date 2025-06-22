@@ -1,7 +1,6 @@
 import { formatterCurrency } from "@/lib/formatters";
 import Image from "next/image";
 import AddToCartButton from "./AddToCartButton";
-import { Product } from "@/generated/prisma";
 import { productWithRelations } from "@/types/product";
 
 const MenuItem = ({ item }: { item: productWithRelations }) => {
