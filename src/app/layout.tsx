@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: "Order delicious food online! Fast delivery & great prices.",
   keywords: ["food delivery", "online order", "restaurant"],
   icons: {
-    icon: "/pizza.svg",
+    icon: "../public/pizza.svg",
   },
 };
 

@@ -38,7 +38,7 @@ import { Routes } from "@/constants/enums";
 import Container from "../container/layout";
 import MinHeading from "../main-heading";
 import Image from "next/image";
-
+import about from "../../../public/assets/about-img.png";
 const About = () => {
   return (
     <Container className="relative overflow-hidden">
@@ -60,7 +60,7 @@ const About = () => {
             {/* Image Section */}
             <div className="relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-2xl animate-float">
               <Image
-                src="/assets/about-img.png"
+                src={about}
                 alt="About Us"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
