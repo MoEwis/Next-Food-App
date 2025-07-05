@@ -2,6 +2,7 @@ import { Routes } from "@/constants/enums";
 import Container from "../container/layout";
 import MinHeading from "../main-heading";
 import Link from "next/link";
+import Image from "next/image";
 
 const Contact = () => {
   return (
@@ -16,6 +17,12 @@ const Contact = () => {
             +1 (123) 456-0090
           </Link>
         </div>
+        <Image
+          src="/images/about-img.png"
+          alt="contact"
+          width={500}
+          height={400}
+        />
       </section>
     </Container>
   );
