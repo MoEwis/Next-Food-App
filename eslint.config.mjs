@@ -13,11 +13,18 @@ const compat = new FlatCompat({
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 
+  // ✅ تجاهل ملفات Prisma المولدة تلقائيًا
+  {
+    ignores: ["src/generated/prisma/**"],
+  },
+
+  // ✅ إعدادات القواعد الخاصة بالمشروع
   {
     files: ["**/*.ts", "**/*.tsx"],
     rules: {
       "@typescript-eslint/no-unused-vars": "off",
       "@typescript-eslint/no-require-imports": "off",
+      "@typescript-eslint/no-explicit-any": "off",
     },
   },
 ];
