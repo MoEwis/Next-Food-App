@@ -1,6 +1,6 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { Extra, Product } from "@/generated/prisma";
+import { Extra } from "@/generated/prisma";
 import { formatterCurrency } from "@/lib/formatters";
 const Extars = ({
   extar,
