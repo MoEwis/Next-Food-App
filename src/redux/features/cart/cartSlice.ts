@@ -1,6 +1,7 @@
 import { Extra, Size } from "@/generated/prisma";
 import { RootState } from "@/redux/store";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 export interface CartItem {
   id: string;
   name: string;
@@ -14,10 +15,9 @@ export interface CartItem {
 interface CartState {
   items: CartItem[];
 }
-const initialCartItems = localStorage.getItem("cartItems");
 
 const initialState: CartState = {
-  items: initialCartItems ? JSON.parse(initialCartItems) : [],
+  items: [],
 };
 
 export const cartSlice = createSlice({
@@ -54,11 +54,21 @@ export const cartSlice = createSlice({
     clearCart: (state) => {
       state.items = [];
     },
+    // ✅ نضيف action اسمه hydrateCart
+    hydrateCart: (state, action: PayloadAction<CartItem[]>) => {
+      state.items = action.payload;
+    },
   },
 });
 
-export const { addCartItem, removeCartItem, clearCart, removeItemFromCart } =
-  cartSlice.actions;
+export const {
+  addCartItem,
+  removeCartItem,
+  clearCart,
+  removeItemFromCart,
+  hydrateCart,
+} = cartSlice.actions;
+
 export default cartSlice.reducer;
 
 export const selectCartItems = (state: RootState) => state.cart.items;
