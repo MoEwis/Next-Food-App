@@ -16,7 +16,6 @@ const CartItems = () => {
   const dispatch = useAppDispatch();
   const subTotal = getSubTotal(cart);
 
-  // ✅ احفظ cart في localStorage فقط على الكلاينت
   useEffect(() => {
     if (typeof window !== "undefined") {
       localStorage.setItem("cartItems", JSON.stringify(cart));
@@ -27,83 +26,97 @@ const CartItems = () => {
     <section>
       {cart && cart.length > 0 ? (
         <>
-          <ul className="space-y-4">
+          <ul className="space-y-6">
             {cart.map((item, index) => (
-              <li key={`${item.id}-${item.size?.id}-${index}`}>
+              <li
+                key={`${item.id}-${item.size?.id}-${index}`}
+                className="p-4 bg-white rounded-xl shadow-sm"
+              >
                 <div className="flex flex-col md:flex-row gap-6 justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="relative w-24 h-24">
+                  {/* Product Info */}
+                  <div className="flex items-start gap-4">
+                    <div className="relative w-24 h-24 rounded-lg overflow-hidden border">
                       <Image
                         src={item.image}
                         alt={item.name}
                         fill
-                        className="object-contain"
+                        className="object-cover"
                       />
                     </div>
-                    <div>
-                      <h4 className="font-semibold md:text-lg">{item.name}</h4>
-                      <div className="relative space-y-1">
-                        {item.size && (
-                          <span className="text-sm text-accent block">
-                            Size: {item.size.name}
-                          </span>
-                        )}
-                        {item.extras && item.extras.length > 0 && (
-                          <div className="flex gap-1 text-sm text-accent">
-                            <span>Extras:</span>
-                            <ul className="list-disc ml-4">
-                              {item.extras.map((extra) => (
-                                <li key={extra.id}>
-                                  {extra.name} {formatterCurrency(extra.price)}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                        <span className="absolute top-0 right-0 text-sm text-black">
-                          x {item.quantity}
-                        </span>
-                      </div>
+                    <div className="space-y-1">
+                      <h4 className="font-semibold text-lg text-primary">
+                        {item.name}
+                      </h4>
+
+                      {item.size && (
+                        <p className="text-sm text-muted-foreground">
+                          Size:{" "}
+                          <span className="font-medium">{item.size.name}</span>
+                        </p>
+                      )}
+
+                      {item.extras && item.extras.length > 0 && (
+                        <div className="text-sm text-muted-foreground">
+                          <span>Extras:</span>
+                          <ul className="list-disc ml-5">
+                            {item.extras.map((extra) => (
+                              <li key={extra.id}>
+                                {extra.name} — {formatterCurrency(extra.price)}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      <span className="inline-block text-sm font-medium mt-1">
+                        Quantity: x{item.quantity}
+                      </span>
                     </div>
                   </div>
-                  <div className="flex flex-1 items-center gap-4 justify-end">
-                    <strong className="text-black">
+
+                  {/* Price + Remove */}
+                  <div className="flex flex-col justify-between items-end gap-4">
+                    <strong className="text-lg text-black">
                       {formatterCurrency(item.basePrice)}
                     </strong>
                     <Button
-                      className="cursor-pointer"
+                      variant="ghost"
+                      size="icon"
                       onClick={() => dispatch(removeCartItem({ id: item.id }))}
+                      className="text-destructive hover:bg-destructive/10"
                     >
-                      <Trash2 />
+                      <Trash2 size={18} />
                     </Button>
                   </div>
                 </div>
               </li>
             ))}
           </ul>
-          <div className="flex flex-col justify-end items-end pt-6 space-y-2">
-            <span className="text-accent font-medium">
-              Subtotal:{" "}
-              <strong className="text-black">
+
+          {/* Total Summary */}
+          <div className="mt-8 p-4 bg-gray-50 rounded-xl border w-full max-w-md ml-auto space-y-2">
+            <div className="flex justify-between text-sm text-muted-foreground">
+              <span>Subtotal</span>
+              <span className="font-medium text-black">
                 {formatterCurrency(subTotal)}
-              </strong>
-            </span>
-            <span className="text-accent font-medium">
-              Delivery:{" "}
-              <strong className="text-black">
+              </span>
+            </div>
+            <div className="flex justify-between text-sm text-muted-foreground">
+              <span>Delivery</span>
+              <span className="font-medium text-black">
                 {formatterCurrency(deliveryFee)}
-              </strong>
-            </span>
-            <span className="text-accent font-medium">
-              Total:{" "}
-              <strong className="text-black">
-                {formatterCurrency(subTotal + deliveryFee)}
-              </strong>
-            </span>
+              </span>
+            </div>
+            <div className="flex justify-between text-base font-semibold text-primary pt-2 border-t">
+              <span>Total</span>
+              <span>{formatterCurrency(subTotal + deliveryFee)}</span>
+            </div>
           </div>
         </>
       ) : (
-        <p>No items in cart</p>
+        <p className="text-center text-muted-foreground py-8 text-lg">
+          No items in cart
+        </p>
       )}
     </section>
   );

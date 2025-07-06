@@ -5,17 +5,27 @@ import { productWithRelations } from "@/types/product";
 
 const MenuItem = ({ item }: { item: productWithRelations }) => {
   return (
-    <li className="p-4 border-4 ">
-      <div className="relative w-48 h-48 mx-auto">
-        <Image src={item.image} alt={item.name} fill className="object-cover" />
+    <li className="bg-white rounded-2xl shadow-md p-4 hover:shadow-xl transition-shadow duration-300 flex flex-col gap-3">
+      <div className="relative w-full aspect-square rounded-xl overflow-hidden">
+        <Image
+          src={item.image}
+          alt={item.name}
+          fill
+          className="object-cover transition-transform duration-300 hover:scale-105"
+        />
       </div>
-      <div className="flex items-center justify-between mb-4">
-        <h4 className="font-semibold text-xl my-3">{item.name}</h4>
-        <strong className="text-accent">
+
+      <div className="flex items-center justify-between">
+        <h4 className="font-semibold text-lg">{item.name}</h4>
+        <span className="text-primary font-bold">
           {formatterCurrency(item.basePrice)}
-        </strong>
+        </span>
       </div>
-      <p className="text-gray-500 text-sm line-clamp-3">{item.description}</p>
+
+      <p className="text-sm text-muted-foreground line-clamp-2">
+        {item.description}
+      </p>
+
       <AddToCartButton item={item} />
     </li>
   );

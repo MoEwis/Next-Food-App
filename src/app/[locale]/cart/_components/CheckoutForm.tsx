@@ -1,4 +1,5 @@
 "use client";
+
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -24,15 +25,18 @@ const CheckoutForm = () => {
   });
 
   const onSubmit = (data: CheckoutFormData) => {
-    // console.log("✅ Checkout Data:", data);
+    // Handle submit
   };
+
   const cart = useAppSelector(selectCartItems);
   const totalAmount = getTotalAmount(cart);
+
   return (
     cart.length > 0 && (
-      <div className="grid gap-6 bg-gray-100 rounded-md p-4">
-        <h2 className="text-2xl text-black font-semibold">Checkout</h2>
-        <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
+      <div className="bg-white rounded-2xl shadow-md p-8 max-w-2xl ">
+        <h2 className="text-3xl font-bold text-primary mb-8">Checkout</h2>
+
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 text-lg">
           {/* Phone Field */}
           <FormInput
             id="phone"
@@ -43,22 +47,25 @@ const CheckoutForm = () => {
           />
 
           {/* Address Field */}
-          <div className="grid gap-1">
-            <Label htmlFor="address" className="text-accent">
+          <div className="space-y-2">
+            <Label
+              htmlFor="address"
+              className="text-base text-muted-foreground"
+            >
               Street Address
             </Label>
             <Textarea
               id="address"
               placeholder="Enter your address"
               {...register("address")}
-              className="border border-gray-300 rounded-md p-2"
+              className="min-h-[100px] text-lg"
             />
             {errors.address && (
-              <p className="text-red-500 text-sm">{errors.address.message}</p>
+              <p className="text-red-500 text-base">{errors.address.message}</p>
             )}
           </div>
 
-          {/* Zip Field */}
+          {/* Zip Code */}
           <FormInput
             id="zip"
             label="Zip Code"
@@ -79,7 +86,7 @@ const CheckoutForm = () => {
           {/* Submit Button */}
           <Button
             type="submit"
-            className="bg-accent text-white py-2 px-4 rounded-md mt-4"
+            className="w-full bg-primary text-white hover:bg-primary/90 text-lg py-4 mt-2 rounded-md font-semibold"
           >
             Pay {formatterCurrency(totalAmount)}
           </Button>
