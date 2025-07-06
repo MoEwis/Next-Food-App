@@ -5,6 +5,7 @@ import { Routes } from "@/constants/enums";
 import { ArrowRightCircle } from "lucide-react";
 import Image from "next/image";
 import Numbers from "./Numbers";
+import HeroImage from "@/../public/assets/Hero-2.jpg";
 const Hero = () => {
   return (
     <section className="section-gap ">
@@ -43,7 +44,7 @@ const Hero = () => {
           {/* Image Container */}
           <div className="relative aspect-[4/3] lg:w-[480px]  max-w-xl mx-auto md:mx-0">
             <Image
-              src="/assets/Hero1.jpg"
+              src={HeroImage}
               alt="Hero"
               fill
               priority
